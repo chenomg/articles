@@ -1,2 +1,2 @@
-# articles
-articles published in my blog.
+# Articles
+Articles published in my blog.
