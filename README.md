@@ -1,2 +1,2 @@
 # Articles
-Articles published in my blog.
+Articles published in my blog → [Do It!](http://jase.im)
