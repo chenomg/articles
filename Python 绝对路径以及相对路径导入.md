@@ -12,7 +12,19 @@
 
 #### `import`是如何工作的
 
+​	但是到底`import`到底是怎么工作的呢？你一般会这样导入
 
+```python
+import abc
+```
 
-[https://realpython.com/absolute-vs-relative-python-imports/](https://realpython.com/absolute-vs-relative-python-imports/)
+​	这时python首先就会在`sys.modules`中查找。这个模块缓存了当前已被导入过的模块名。
+
+​	如果没有在模块缓存中找到，python就会继续在内建的模块列表中查找。这些是python预装的模块，可以在python标准库中找到。如果名字还是不能在标准库中找到，python然后会在`sys.path`中定义的文件夹列表中查找。这个列表通常会包括当前的目录，会首先在这个目录中查找。
+
+​	当python找到这个模块后，就会把它绑定到这个本地作用域中的变量名。这就意味着`abc`现在已经被定义而且可以在当前文件中被正常的使用而不抛出`NameError`。
+
+​	如果名字最终没找到，你就会得到一个`ModuleNotFoundError`。点[这里](https://docs.python.org/3/reference/import.html)（python文档）你可以找到更多关于import的资料。
+
+[Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
