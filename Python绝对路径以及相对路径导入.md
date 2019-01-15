@@ -26,5 +26,11 @@ import abc
 
 ​	如果名字最终没找到，你就会得到一个`ModuleNotFoundError`。点[这里](https://docs.python.org/3/reference/import.html)（python文档）你可以找到更多关于import的资料。
 
+> **注意：安全担忧**
+> 注意到Python的导入系统有一些重大的安全隐患。这主要原因就在于本身的灵活性。比如模块的缓存是可写入的，并且存在通过import模块去复写Python核心函数库。导入第三方库也有可能使你的应用暴露安全威胁。
+> 这里有一些资源可以帮助你学到更多关于安全风险以及如何去避免的知识：
+> * [10 common security gotchas in Python and how to avoid them](https://hackernoon.com/10-common-security-gotchas-in-python-and-how-to-avoid-them-e19fbe265e03) 作者：Anthony Shaw，（关于python的import模块五讲）
+> * [Episode #168: 10 Python security holes and how to plug them](https://talkpython.fm/episodes/show/168/10-python-security-holes-and-how-to-plug-them) 来自：TalkPython podcast（小组成员在27:15左右开始谈论import）
+
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
