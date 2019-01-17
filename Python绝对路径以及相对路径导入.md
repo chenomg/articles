@@ -29,8 +29,38 @@ import abc
 > **注意：安全担忧**
 > 注意到Python的导入系统有一些重大的安全隐患。这主要原因就在于本身的灵活性。比如模块的缓存是可写入的，并且存在通过import模块去复写Python核心函数库。导入第三方库也有可能使你的应用暴露安全威胁。
 > 这里有一些资源可以帮助你学到更多关于安全风险以及如何去避免的知识：
-> * [10 common security gotchas in Python and how to avoid them](https://hackernoon.com/10-common-security-gotchas-in-python-and-how-to-avoid-them-e19fbe265e03) 作者：Anthony Shaw，（关于python的import模块五讲）
-> * [Episode #168: 10 Python security holes and how to plug them](https://talkpython.fm/episodes/show/168/10-python-security-holes-and-how-to-plug-them) 来自：TalkPython podcast（小组成员在27:15左右开始谈论import）
+> [10 common security gotchas in Python and how to avoid them](https://hackernoon.com/10-common-security-gotchas-in-python-and-how-to-avoid-them-e19fbe265e03)
+> * 作者：Anthony Shaw，（关于python的import模块五讲）*
+> [Episode #168: 10 Python security holes and how to plug them](https://talkpython.fm/episodes/show/168/10-python-security-holes-and-how-to-plug-them)
+> * 来自：TalkPython podcast（小组成员在27:15左右开始谈论import）*
+
+#### import语法
+
+现在你应该已经知道了`import`语句是如何工作的，让我们来了解一下具体的语法。你可以导入包(package)以及模块(module)。(注意当你导入一个包的时候自己上是导入了包里面的`__init__.py`文件,作为模块).你同样可以从包或模块中导入特定的对象。
+
+这里通常有两种导入的语法。当你使用第一种时，你直接导入资源，比如：
+
+```python
+import abc
+```
+
+此时`abc`可以是包或者模块。
+
+第二种语法，你可以从一个包或者模块中导入另外的资源。比如：
+
+```python
+from abc import xyz
+```
+
+此时`xyz`可以是一个模块，子包，或者对象，比如一个class或者function。
+
+你还可以重命名你导入的资源，就像：
+
+```python
+import abc as other_name
+```
+
+这会在当前的脚本内将导入的资源`abc`重命名为`other_name`。这时你必须在代码中将对应的名字改为`other_name`,否则原先的名字将不能被识别。
 
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
