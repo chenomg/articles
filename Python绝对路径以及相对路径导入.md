@@ -62,5 +62,18 @@ import abc as other_name
 
 这会在当前的脚本内将导入的资源`abc`重命名为`other_name`。这时你必须在代码中将对应的名字改为`other_name`,否则原先的名字将不能被识别。
 
+#### `import`语句风格
+
+作为python的[官方](https://realpython.com/python-code-quality/)样式说明，[PEP8](http://pep8.org/#imports)提出了几点你在写import语句时应该注意的。大致概括如下：
+
+1. 导入语句应该位于文件的最上部，在模块说明或者文档之下。
+
+2. 导入应该根据导入的内容进行区分。通常有三种分类：
+    * 标准库导入(python内置库)
+    * 安装的第三方库(已经安装的并且不属于当前应用的模块)
+    * 本地应用导入(属于当前应用的模块)
+
+3. 不同分类的模块应该用空行分开。
+
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
