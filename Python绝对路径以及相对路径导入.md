@@ -75,5 +75,83 @@ import abc as other_name
 
 3. 不同分类的模块应该用空行分开。
 
+当然，你也可以按照导入的包或者模块的字母排序。这样你可以快速定位到特定的资源,特别是当你有很多资源被导入的时候。
+
+下面是一个示例，展示了如何优雅的导入。
+```python
+“““Illustration of good import statement styling.
+
+Note that the imports come after the docstring.
+
+
+”””
+
+# Standard library imports
+import datetime
+import os
+
+# Third party imports
+from flask import Flask
+from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
+
+# Local application imports
+from local_module import local_class
+from local_package import local_function
+
+```
+
+上面的这些import语句被分成了三个不同的分组，中间用一行空行分隔。在每个分组内又根据字母顺序排列。
+
+### 绝对路径导入
+
+你已经基本掌握了如何写import语句并且优雅的表达出来。现在让我们更深入的来学习一下绝对路径导入。
+
+绝对路径导入需要表达清楚资源被导入时相对于项目根路径的完整路径。
+
+#### 语法以及实际案例
+
+我们先假设你有如下的一个目录结构：
+
+```
+└── project
+    ├── package1
+    │   ├── module1.py
+    │   └── module2.py
+    └── package2
+        ├── __init__.py
+        ├── module3.py
+        ├── module4.py
+        └── subpackage1
+            └── module5.py
+```
+这里有一个目录，`project`，它又包含了两个子目录，`package1`以及`package2`。
+
+目录`package1`里面有两个文件，`module1.py`和`module2.py`。
+
+目录`package2`内有三个文件：两个模块，`module3.py`和`module4.py`，已经一个初始化文件，`__init__.py`。其中还有一个目录，`subpackage1`，这个子目录中又包含一个文件，`module5.py`。
+
+让我们假设如下：
+1. `package1/module2.py`包含一个函数，`function1`。
+2. `package2/__init__.py`包含一个类，`class1`。
+3. `package2/subpackage1/module5.py`包含一个function2，`function2`。
+
+下面就是绝对路径导入时的实际案例。
+
+```python
+from package1 import module1
+from package1.module2 import function1
+from package2 import class1
+from package2.subpackage1.module5 import function2
+```
+
+注意到我们必须在导入时指定它的详细路径，相对于包的顶层目录。这就相当于这个文件的路径，只不过我们将斜杠(`/`)换成了点(`.`)。
+
+#### 绝对路径导入的利弊
+
+绝对路径导入
+
+
+
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
