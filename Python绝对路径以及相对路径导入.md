@@ -79,12 +79,11 @@ import abc as other_name
 
 下面是一个示例，展示了如何优雅的导入。
 ```python
-“““Illustration of good import statement styling.
+'''
+Illustration of good import statement styling.
 
 Note that the imports come after the docstring.
-
-
-”””
+'''
 
 # Standard library imports
 import datetime
