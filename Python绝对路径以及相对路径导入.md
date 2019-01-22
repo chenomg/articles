@@ -149,9 +149,27 @@ from package2.subpackage1.module5 import function2
 
 #### 绝对路径导入的利弊
 
-绝对路径导入
+绝对路径导入由于其直观往往是大家的首选。只要看一下导入语句你就能知道资源是从什么位置导入的。再者，就算当前import语句的位置发生了变化，此绝对路径导入的资源依然有效。实际上，PEP8明确表明了推荐使用绝对路径导入。
 
+然后，有的时候绝对路径导入却会使代码变的复杂，这取决与程序目录结构的复杂程度。假如现在有一个导入语句如下：
+```python
+from package1.subpackage2.subpackage3.subpackage4.module5 import function6
+```
+这看上去很荒谬，是吧？幸运的是，相对路径导入在这个例子中可以作为很好的替代选项!
 
+### 相对路径导入
+
+相对路径导入指的是导入资源相对于当前位置(当前import语句所在的位置)的相对路径。这里有两种相对导入的类型：隐式的和显式的。隐式相对导入已经在python3中被弃用，所以我在这里不会谈论它。
+
+#### 语法以及实际案例
+
+相对路径导入的语法取决于当前的位置以及将要被导入的模块、包或对象的位置。以下是几个相对路径导入的例子：
+```python
+from .some_module import some_class
+from ..some_package import some_function
+from . import some_class
+```
+可以看到每个导入语句中都至少有一个点号。相对路径导入使用点号来标识相对位置。
 
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
