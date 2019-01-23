@@ -78,6 +78,7 @@ import abc as other_name
 当然，你也可以按照导入的包或者模块的字母排序。这样你可以快速定位到特定的资源,特别是当你有很多资源被导入的时候。
 
 下面是一个示例，展示了如何优雅的导入。
+
 ```python
 '''
 Illustration of good import statement styling.
@@ -124,6 +125,7 @@ from local_package import local_function
         └── subpackage1
             └── module5.py
 ```
+
 这里有一个目录，`project`，它又包含了两个子目录，`package1`以及`package2`。
 
 目录`package1`里面有两个文件，`module1.py`和`module2.py`。
@@ -131,9 +133,10 @@ from local_package import local_function
 目录`package2`内有三个文件：两个模块，`module3.py`和`module4.py`，已经一个初始化文件，`__init__.py`。其中还有一个目录，`subpackage1`，这个子目录中又包含一个文件，`module5.py`。
 
 让我们假设如下：
+
 1. `package1/module2.py`包含一个函数，`function1`。
 2. `package2/__init__.py`包含一个类，`class1`。
-3. `package2/subpackage1/module5.py`包含一个function2，`function2`。
+3. `package2/subpackage1/module5.py`包含一个函数，`function2`。
 
 下面就是绝对路径导入时的实际案例。
 
@@ -151,9 +154,11 @@ from package2.subpackage1.module5 import function2
 绝对路径导入由于其直观往往是大家的首选。只要看一下导入语句你就能知道资源是从什么位置导入的。再者，就算当前import语句的位置发生了变化，此绝对路径导入的资源依然有效。实际上，PEP8明确表明了推荐使用绝对路径导入。
 
 然后，有的时候绝对路径导入却会使代码变的复杂，这取决与程序目录结构的复杂程度。假如现在有一个导入语句如下：
+
 ```python
 from package1.subpackage2.subpackage3.subpackage4.module5 import function6
 ```
+
 这看上去很荒谬，是吧？幸运的是，相对路径导入在这个例子中可以作为很好的替代选项!
 
 ### 相对路径导入
@@ -163,12 +168,45 @@ from package1.subpackage2.subpackage3.subpackage4.module5 import function6
 #### 语法以及实际案例
 
 相对路径导入的语法取决于当前的位置以及将要被导入的模块、包或对象的位置。以下是几个相对路径导入的例子：
+
 ```python
 from .some_module import some_class
 from ..some_package import some_function
 from . import some_class
 ```
+
 可以看到每个导入语句中都至少有一个点号。相对路径导入使用点号来标识相对位置。
+
+一个点号代表了相关的模块或者包和当前的主位置在一个目录下。两个点号意味着在当前位置的父级目录下，也就是上一级目录。三个点号则意味着在上上层目录下，以此类推。如果你使用过类Unix系统的话，你会感觉很熟悉。
+
+我们先假设你有一个和先前一样的目录结构：
+
+```
+└── project
+    ├── package1
+    │   ├── module1.py
+    │   └── module2.py
+    └── package2
+        ├── __init__.py
+        ├── module3.py
+        ├── module4.py
+        └── subpackage1
+            └── module5.py
+```
+
+回顾一下文件的内容：
+
+1. `package1/module2.py`包含一个函数，`function1`。
+2. `package2/__init__.py`包含一个类，`class1`。
+3. `package2/subpackage1/module5.py`包含一个函数，`function2`。
+
+你可以在`package1/module1.py`中这样导入`function1`:
+
+```python
+# package1/module1.py
+
+form .module2 import function1
+```
 
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
