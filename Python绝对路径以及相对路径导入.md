@@ -208,5 +208,36 @@ from . import some_class
 form .module2 import function1
 ```
 
+你在这里使用了一个点号，因为`module2`和当前模块(`module1.py`)在一个目录下面。
+
+你在`package2/module3.py`中导入`class1`,`function2`时如下：
+```python
+# package2/module3.py
+
+from . import class1
+from .subpackage1.module5 import function2
+```
+
+在第一行中,单点号说明你从当前目录中导入了class1. 回顾一下：当我们导入一个文件夹的时候，实际上我们是导入了该文件夹下面的`__init__.py`文件。
+
+在第二行中，你使用的单点号因为subpackage1和当前文件(module3.py)在相同的目录。
+
+#### 相对路径导入的利弊
+
+相对路径导入一个显而易见的优点就是十分的简洁明了。根据当前所在的位置，我们可以将前面用到的冗长的表达转换为如下简单的表述：
+```python
+from ..subpackage4.module5 import function6
+```
+
+不过，相对路径导入却也容易使导入语句变的混乱，特别是在一些目录结构会发生变化的共享项目。相对了路径导入还有一个缺点就是可读性较差，让人很难清楚地了解到资源所在的位置。
+
+### 结论
+
+以上我们已经快速的了解了绝对以及相对路径导入！你已经掌握了导入语句的实际使用方法，还知道了一些他们之间的区别。
+
+有了这个新技能后，你就可以正确的导入标准库，第三方库，以及自己的本地包或模块。当然，你通常还是需要首先考虑使用绝对路径导入，除非你的资源路径特别长使得导入语句特别长的时候。
+
+本篇import教程到此结束，谢谢
+
 [Reference：absolute-vs-relative-python-imports](https://realpython.com/absolute-vs-relative-python-imports/)
 
