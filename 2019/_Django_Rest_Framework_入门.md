@@ -15,7 +15,7 @@
 
 *此两篇文章待翻译。。。*
 
-### DRF设置
+## DRF设置
 
 安装：
 ```shell
@@ -36,7 +36,7 @@ INSTALLED_APPS = (
 )
 ```
 
-### RESTFul结构
+## RESTFul结构
 
 在一个RESTFul API中，节点(URLs)定义了API的结构以及用户如何通过HTTP方法(GET，POST，DELETE)成功的从我们的应用中获取数据。节点应该根据集合和元素符合逻辑的组织起来，集合和元素都是资源。在例子中，我们有一个简单的资源，`posts`，因此我们将使用如下的URLs - /posts/ 和 /posts/<id>，对应集合和特定的元素。
 
@@ -45,11 +45,11 @@ INSTALLED_APPS = (
 | `/posts/`     | Show all posts | Add new post | Update all posts | Delete all posts |
 | `/posts/<id>` | Show `<id>`    | N/A          | Update `<id>`    | Delete `id`      |
 
-### DRF快速开始
+## DRF快速开始
 
 让我们开发新的API并运行吧
 
-##### 模型序列化(Model Serializer)
+#### 模型序列化(Model Serializer)
 
 DRF 的序列器将模型实例转化为Python 字典, 然后可以在转换为多种API中使用的格式 - 如JSON和XML. 和Django的ModelFormclass类似，DRF有一个简洁的序列器，ModelSerializerclass，非常容易使用：只要告诉它你想要模型中的哪些项：
 
@@ -65,7 +65,7 @@ class PostSerializer(serializers.ModelSerializer):
 ```
 将它保存在‘talk’目录中，文件名: `serializers.py`
 
-##### 更新视图
+#### 更新视图
 
 我们需要更新现有的视图以适应RESTFul范例.更新当前视图如下：
 
@@ -108,7 +108,7 @@ def post_element(request, pk):
 
 > 查看[官方文档]('http://www.django-rest-framework.org/api-guide/views#@api_view')以了解更多关于@api_view的资料
 
-##### 更新URLs
+#### 更新URLs
 
 接下来让我们设定新的URLs:
 
@@ -127,7 +127,7 @@ urlpatterns = patterns(
 )
 ```
 
-##### 测试
+#### 测试
 
 现在让我们进行第一次测试！
 
@@ -138,6 +138,6 @@ urlpatterns = patterns(
 
 在继续之前你应该已经注意到`author`字段是个`id`, 而不是实际的名字。我们接下来将会解释，现在我们使用新的API以使模板正常的工作。
 
-### 重构REST
+## 重构REST
 
 Reference: [Django Rest Framework – An Introduction]('https://realpython.com/django-rest-framework-quick-start/')
