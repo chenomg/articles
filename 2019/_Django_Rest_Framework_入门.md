@@ -138,6 +138,35 @@ urlpatterns = patterns(
 
 在继续之前你应该已经注意到`author`字段是个`id`, 而不是实际的名字。我们接下来将会解释，现在我们使用新的API以使模板正常的工作。
 
-## 重构REST
+## 根据REST重构代码
+
+#### GET
+
+在初始页载入的时候，我们希望显示所有`posts`.于是，我们需要加入如下AJAX请求：
+```javascript
+load_posts()
+
+// Load all posts on page load
+function load_posts() {
+    $.ajax({
+        url: 'api/v1/posts/', // the endpoint
+        type: 'GET', // http method
+        // handle a successful response
+        success: function(json){
+            for (var i = 0; i < json.length; i++){
+                console.log(json[i])
+                $("#talk").prepend("<li id='post-"+json[i].id+"'><strong>"+json[i].text+"</strong> - <em> "+json[i].author+"</em> - <span> "+json[i].created+
+                "</span> - <a id='delete-post-"+json[i].id+"'>delete me</a></li>");
+            }
+        },
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+    });
+};
+```
 
 Reference: [Django Rest Framework – An Introduction]('https://realpython.com/django-rest-framework-quick-start/')
